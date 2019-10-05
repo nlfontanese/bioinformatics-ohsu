@@ -1,0 +1,69 @@
+########################Pseudocode #I've never written pseudocode, is this correct?
+PROGRAM DnaToProtein:
+
+READ pa1.fasta
+
+TRANSLATE sequence:
+	codons('ATG':'M', 'GCT':'A', 'GTT':'A', 'GCA':'A', 'GCG':'A', 'TGT':'C', 'TGC':'C',
+	'GAT':'D', 'GAC':'D', 'GAA':'E', 'GAG':'E', 'TTT':'F', 'TTC':'F', 'GGT':'G', 'GGC':'G',
+	'GGA':'G', 'GGG':'G', 'CAT':'H', 'CAC':'H', 'ATT':'I', 'ATC':'I', 'ATA':'I', 'AAA':'K',
+	'AAG':'K', 'TTA':'L', 'TTG':'L', 'CTT':'L', 'CTC':'L', 'AAT':'N', 'AAC':'N', 'CCT':''P',
+	'CCC':'P', 'CCA':'P', 'CCG':'P', 'CAA':'Q', 'CAG':'Q', 'CGT':'R', 'CGC':'R', 'CGA':'R',
+	'CGG':'R', 'AGA':'R', 'AGG':'R', 'AGT':'S', 'AGC':'S', 'ACT':'T', 'ACC':'T', 'ACA':'T',
+	'ACG':'T', 'GTT':'V', 'GTC':'V', 'GTA':'V', 'GTG':'V', 'TGG':'W', 'TAT':'Y', 'TAC':'Y',
+	'TAA':'STOP', 'TAG':'STOP', 'TGA':'STOP')
+
+FIND:
+	StartSeq = 'ATG'
+	StopSeq = ['TAA', 'TAG', 'TGA']
+
+IF StartSeq found
+	then begin translation
+else END
+
+IF StopSeq found
+	then stop translation
+END IF.
+
+DoubleBasic = ['RR', 'RH', 'RK', 'HH", "HR', 'HK', 'KR', 'KH', 'KK']
+
+IF DoubleBasic found
+	index sequence
+
+PRINT Protein Sequence and Indexed Double Basic sites
+
+END. 
+
+
+###################################################################################
+
+########################python code
+file = open('./data/pa1.fasta', r) #open file to read
+dna_seq = file.read()       #setting sequence in file as dna_seq
+protein = ('ATG':'M', 'GCT':'A', 'GTT':'A', 'GCA':'A', 'GCG':'A', 'TGT':'C', 'TGC':'C',
+	'GAT':'D', 'GAC':'D', 'GAA':'E', 'GAG':'E', 'TTT':'F', 'TTC':'F', 'GGT':'G', 'GGC':'G',
+	'GGA':'G', 'GGG':'G', 'CAT':'H', 'CAC':'H', 'ATT':'I', 'ATC':'I', 'ATA':'I', 'AAA':'K',
+	'AAG':'K', 'TTA':'L', 'TTG':'L', 'CTT':'L', 'CTC':'L', 'AAT':'N', 'AAC':'N', 'CCT':''P',
+	'CCC':'P', 'CCA':'P', 'CCG':'P', 'CAA':'Q', 'CAG':'Q', 'CGT':'R', 'CGC':'R', 'CGA':'R',
+	'CGG':'R', 'AGA':'R', 'AGG':'R', 'AGT':'S', 'AGC':'S', 'ACT':'T', 'ACC':'T', 'ACA':'T',
+	'ACG':'T', 'GTT':'V', 'GTC':'V', 'GTA':'V', 'GTG':'V', 'TGG':'W', 'TAT':'Y', 'TAC':'Y',
+	'TAA':'STOP', 'TAG':'STOP', 'TGA':'STOP')      # I keep getting 'invalid syntax' error due to ':' symbols. What other symbol should be used here?
+protein_seq = ' '
+
+with open('pa1.fasta') as f_in:  #Removes any lines with a begining charater '>'
+	for line in f_in.readlines():
+		if line [0] == '>':
+			dna_seq +=(line.strip '>') + '   ')
+	else:
+		protein_seq = translate.dna(dna_seq)
+
+for i in range(0, len(dna_seq[i:i+3]] == 'STOP': # stops translating when a stop codon is reached
+	break
+protein_seq += protein[dna_seq[i:i+3]] # ensurs reading the sequence 3 codons at a time
+
+
+print("The protein sequence is: ", protein_seq)
+
+double_basic = ['RR', 'RH', 'RK', 'HH', 'HR', 'HK', 'KR', 'KH', 'KK']
+result = word.find('RR', 'RH', 'RK', 'HH', 'HR', 'HK', 'KR', 'KH', 'KK')
+print("Putative cleavage sites at: ", result)   #Indexes double basic cleavage sites
